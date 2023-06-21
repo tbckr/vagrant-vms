@@ -1,0 +1,14 @@
+---
+- name: Bootstrap
+  hosts: all
+  become: yes
+  gather_facts: no
+  roles:
+    - role: robertdebock.bootstrap
+
+- name: Install
+  hosts: all
+  become: yes
+  gather_facts: no
+  roles:
+    - role: robertdebock.bootstrap
