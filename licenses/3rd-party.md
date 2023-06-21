@@ -9,6 +9,7 @@ This is a list of 3rd party software and tools used in this repository.
 <!-- param::isNotitle::true:: -->
 
 - [Details](#details)
+  - [Layout, Vagrantfiles and Examples](#layout-vagrantfiles-and-examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
