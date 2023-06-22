@@ -4,7 +4,10 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "debian/bookworm64"
+  config.vm.box = "debian/bullseye64"
+
+  # Disables default synced folder
+  config.vm.synced_folder ".", "/vagrant", disabled: true
 
   config.vm.provider :virtualbox do |v|
     v.name = "gitea"
@@ -16,13 +19,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "gitea"
   config.vm.network :private_network, ip: "192.168.56.22"
 
-  # Ansible provisioner
   config.vm.provision "ansible" do |ansible|
     ansible.compatibility_mode = "2.0"
-    ansible.limit = "all"
-    ansible.inventory_path = "./provisioning/"
     ansible.playbook = "provisioning/playbook.yml"
     ansible.galaxy_role_file = "provisioning/requirements.yml"
   end
-
 end

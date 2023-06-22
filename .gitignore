@@ -249,4 +249,4 @@ cython_debug/
 # *.log
 
 .idea/
-*/provisioning/roles/*
+**/provisioning/roles/*.*

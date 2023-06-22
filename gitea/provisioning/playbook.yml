@@ -3,12 +3,18 @@
   hosts: all
   become: yes
   gather_facts: no
+  pre_tasks:
+    - # Fixes issue https://github.com/robertdebock/ansible-role-bootstrap/issues/56
+    - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
   roles:
     - role: robertdebock.bootstrap
 
-- name: Install
+- name: Install Gitea
   hosts: all
   become: yes
-  gather_facts: no
+  gather_facts: yes
   roles:
-    - role: robertdebock.bootstrap
+    - role: robertdebock.gitea
